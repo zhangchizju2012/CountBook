@@ -35,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v) {
                     Intent newActivity = new Intent(MainActivity.this,AddActivity.class);
-                    startActivity(newActivity);
+                    //startActivity(newActivity);
+                    // https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
+                    startActivityForResult(newActivity, 1);
                     //startActivityForResult(addIntent,1);
             }
         });
@@ -50,6 +52,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    // https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String result = data.getStringExtra("result");
+                titleText.setText(result);
+            }
+        }
     }
 
 
