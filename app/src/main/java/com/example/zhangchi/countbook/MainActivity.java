@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // https://stackoverflow.com/questions/24257797/how-to-update-listview-when-an-item-is-click-from-the-listview-itself
         countList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
